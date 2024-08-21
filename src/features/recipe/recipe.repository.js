@@ -25,7 +25,7 @@ export default class RecipeRepository {
             // Generate content using the prompt
             const result = await model.generateContent(prompt);
             const generatedText = result.response.text();
-            console.log(generatedText);
+            
 
             // Ensure the generated text is a string
             if (typeof generatedText !== 'string') {
