@@ -49,7 +49,7 @@ export default class UserRepository{
             throw new ApplicationError("No valid fields to update", 400);
         }
 
-        const user = await UserModel.findByIdAndUpdate(userId, updateObject, { new: true });
+        const user = await UserModel.findByIdAndUpdate(userId, updateObject, { new: true }).select('name email imageUrl');
 
         if (user) {
             return user;
@@ -65,7 +65,7 @@ export default class UserRepository{
 
     async fetchUser(userId){
         try {
-            const user=await UserModel.findById(userId).select('name email imageUrl habits');
+            const user=await UserModel.findById(userId).select('name email imageUrl');
             if(user){
                 return {success:true, res:user}
             }else{

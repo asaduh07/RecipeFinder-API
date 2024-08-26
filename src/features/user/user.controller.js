@@ -58,6 +58,7 @@ export default class UserController {
             const userId=req.userId;
             const result = await this.userRepository.updateDetails(imageUrl, {userId,...req.body})
             if (result) {
+                console.log(result);
                 return res.status(200).send(result);
             }
         } catch (error) {
